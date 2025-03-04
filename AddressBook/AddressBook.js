@@ -33,9 +33,36 @@ class Contact {
     }
 }
 
-try{
-let contact1 = new Contact("Abhishek", "Sen", "Anand Nagar", "Bhopal", "Madhya Pradesh", "462022", "8083134796", "abhisheksen7023@gmail.com");
-console.log("Contact Created:", contact1);
-}catch(error){
+class AddressBook {
+    constructor() {
+        this.contacts = [];
+    }
+
+    addContact(contact) {
+        if (contact instanceof Contact) {
+            this.contacts.push(contact);
+            console.log("Contact added successfully!");
+        } else {
+            throw new Error("Invalid Contact!");
+        }
+    }
+
+    displayContacts() {
+        console.log("Address Book:", this.contacts);
+    }
+}
+
+
+let addressBook = new AddressBook();
+try {
+    let contact1 = new Contact("Abhishek", "Sen", "Anand Nagar", "Bhopal", "Madhya Pradesh", "462022", "8095135797", "A\abhi706@example.com");
+    let contact2 = new Contact("Neeraj", "Kumar", "Anand Nagar", "Bhopal", "Madhya Pradesh", "462022", "9876543120", "neeraj123@example.com");
+
+    addressBook.addContact(contact1);
+    addressBook.addContact(contact2);
+
+    addressBook.displayContacts();
+} catch (error) {
     console.error(error.message);
 }
+
