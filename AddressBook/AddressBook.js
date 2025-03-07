@@ -84,6 +84,9 @@ class AddressBook {
         countContacts() {
             return this.contacts.reduce(count => count + 1, 0);
         }
+        searchByCityOrState(city, state) {
+            return this.contacts.filter(c => c.city === city || c.state === state);
+        }
     displayContacts() {
         console.log("Address Book:", this.contacts);
     }
@@ -92,8 +95,8 @@ class AddressBook {
 
 let addressBook = new AddressBook();
 try {
-    let contact1 = new Contact("Abhishek", "Sen", "Anand Nagar", "Bhopal", "Madhya Pradesh", "400001", "9874563210", "abhi7654@example.com");
-    let contact2 = new Contact("Neeraj", "Kumar", "Piplani", "Bhopal", "Madhya Pradesh", "400001", "9876544560", "neerajbhi7654@example.com");
+    let contact1 = new Contact("Abhishek", "Sen", "Anand Nagar", "Bhopal", "Madhya Pradesh", "400001", "9876543210", "abhi7654@example.com");
+    let contact2 = new Contact("Neeraj", "Kumar", "Piplani", "Bhopal", "Madhya Pradesh", "400001", "9876543210", "neerajbhi7654@example.com");
 
     addressBook.addContact(contact1);
     addressBook.addContact(contact2);
@@ -106,6 +109,7 @@ try {
     addressBook.deleteContact("Neeraj");
     addressBook.displayContacts();
     console.log("Total Contacts:", addressBook.countContacts());
+    console.log("Searching by City Or State",addressBook.searchByCityOrState("Bhopal", "Madhya Pradesh"));
 } catch (error) {
     console.error(error.message);
 }
