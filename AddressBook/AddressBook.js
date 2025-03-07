@@ -37,13 +37,13 @@ class AddressBook {
     }
 
     addContact(contact) {
-        if (contact instanceof Contact) {
+            if (this.contacts.some(c => c.firstName === contact.firstName && c.lastName === contact.lastName)) {
+                console.log("Duplicate Contact! Cannot add.");
+                return;
+            }
             this.contacts.push(contact);
             console.log("Contact added successfully!");
-        } else {
-            throw new Error("Invalid Contact!");
         }
-    }
     editContact(firstName, updatedDetails) {
             let contact = this.contacts.find(c => c.firstName === firstName);
             if (!contact) {
@@ -99,11 +99,11 @@ try {
     addressBook.addContact(contact2);
 
     addressBook.displayContacts();
-    addressBook.editContact("Neeraj", { city: "Reewa" });
+    addressBook.editContact("Abhishek", { city: "Rajgarh" });
 
     
     addressBook.displayContacts();
-    addressBook.deleteContact("Abhi");
+    addressBook.deleteContact("Neeraj");
     addressBook.displayContacts();
     console.log("Total Contacts:", addressBook.countContacts());
 } catch (error) {
