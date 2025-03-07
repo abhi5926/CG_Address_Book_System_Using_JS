@@ -114,6 +114,17 @@ class AddressBook {
         sortByName() {
             this.contacts.sort((a, b) => a.firstName.localeCompare(b.firstName));
         }
+        sortByCity() {
+            this.contacts.sort((a, b) => a.city.localeCompare(b.city));
+        }
+    
+        sortByState() {
+            this.contacts.sort((a, b) => a.state.localeCompare(b.state));
+        }
+    
+        sortByZip() {
+            this.contacts.sort((a, b) => a.zip.localeCompare(b.zip));
+        }
     displayContacts() {
         console.log("Address Book:", this.contacts);
     }
@@ -122,8 +133,8 @@ class AddressBook {
 
 let addressBook = new AddressBook();
 try {
-    let contact1 = new Contact("Abhishek", "Sen", "Anand Nagar", "Bhopal", "Madhya Pradesh", "400001", "9876543210", "abhi7654@example.com");
-    let contact2 = new Contact("Neeraj", "Kumar", "Piplani", "Bhopal", "Madhya Pradesh", "400001", "9876543210", "neerajbhi7654@example.com");
+    let contact1 = new Contact("Neeraj", "Kumar", "Piplani", "Bhopal", "Madhya Pradesh", "400001", "9876543210", "neerajbhi7654@example.com");
+    let contact2 = new Contact("Abhishek", "Sen", "Anand Nagar", "Bhopal", "Madhya Pradesh", "400001", "9876543210", "abhi7654@example.com");
     let contact3 = new Contact("Rajan", "Chouhan", "Patel Nagar", "Bhopal", "Madhya Pradesh", "402001", "9892543210", "Rajan123@example.com");
 
     addressBook.addContact(contact1);
@@ -131,11 +142,11 @@ try {
     addressBook.addContact(contact3);
 
     addressBook.displayContacts();
-    addressBook.editContact("Abhishek", { city: "Rajgarh" });
+    addressBook.editContact("Abhishek", { city: "Chakia" });
 
     
     addressBook.displayContacts();
-    addressBook.deleteContact("Neeraj");
+    addressBook.deleteContact("Abhi");
     addressBook.displayContacts();
     console.log("Total Contacts:", addressBook.countContacts());
     console.log("Searching by City Or State",addressBook.searchByCityOrState("Bhopal", "Madhya Pradesh"));
@@ -143,6 +154,12 @@ try {
     addressBook.countByCityOrState();
     addressBook.sortByName();
     addressBook.displayContacts();
+    addressBook.sortByCity();
+    addressBook.displayContacts();
+    addressBook.sortByState();
+    addressBook.displayContacts();  
+    addressBook.sortByZip();
+    addressBook.displayContacts
 } catch (error) {
     console.error(error.message);
 }
