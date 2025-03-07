@@ -81,7 +81,9 @@ class AddressBook {
                 console.log("Contact not found!");
             }
         }
-
+        countContacts() {
+            return this.contacts.reduce(count => count + 1, 0);
+        }
     displayContacts() {
         console.log("Address Book:", this.contacts);
     }
@@ -90,19 +92,20 @@ class AddressBook {
 
 let addressBook = new AddressBook();
 try {
-    let contact1 = new Contact("Abhishek", "Sen", "Anand Nagra", "Bhopal", "Madhya Pradesh", "400001", "9892543210", "abhi7654@example.com");
-    let contact2 = new Contact("Neeraj", "Kumar", "Piplani", "Bhopal", "Madhya Pradesh", "400001", "9876543210", "neerajbhi7654@example.com");
+    let contact1 = new Contact("Abhishek", "Sen", "Anand Nagar", "Bhopal", "Madhya Pradesh", "400001", "9874563210", "abhi7654@example.com");
+    let contact2 = new Contact("Neeraj", "Kumar", "Piplani", "Bhopal", "Madhya Pradesh", "400001", "9876544560", "neerajbhi7654@example.com");
 
     addressBook.addContact(contact1);
     addressBook.addContact(contact2);
 
     addressBook.displayContacts();
-    addressBook.editContact("Rajan", { city: "Chouhan" });
+    addressBook.editContact("Neeraj", { city: "Reewa" });
 
     
     addressBook.displayContacts();
-    addressBook.deleteContact("Abhishek");
+    addressBook.deleteContact("Abhi");
     addressBook.displayContacts();
+    console.log("Total Contacts:", addressBook.countContacts());
 } catch (error) {
     console.error(error.message);
 }
